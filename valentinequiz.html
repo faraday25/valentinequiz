@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Our Relationship Quiz ❤️</title>
+    Our Love Story: A Valentine's Quiz ❤️
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffe6f2;
+            text-align: center;
+            padding: 20px;
+        }
+        .question {
+            background: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #ff66b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px; /* Added spacing between buttons */
+        }
+    </style>
+</head>
+<body>
+    <h1>How Well Do You Know Us? 💖</h1> <!-- Fixed emoji (removed extra character) -->
+    <div id="quiz"></div>
+    <p id="score"></p>
+
+    <script>
+        const questions = [
+            {
+                question: "1. Which U-Bahn station did we first meet in Munich?",
+                options: ["Frankfurter Ring", "Milbertshofen", "Universität", "Theresienstrasse"],
+                correct: 2
+            },
+            {
+                question: "2. What was our first date like?",
+                options: ["A cozy café ☕", "Netflix and Chill 😎", "Running Session", "Long walk 🚶‍♂️❤️"],
+                correct: 3
+            },
+            {
+                question: "3. What was the first museum we visited together? 🏛️",
+                options: ["Residence Museum 🏰✨", "Deutsches Museum 🔬⚙️", "Alte Pinakothek 🎨🖌️", "BMW Museum 🚗💨"],
+                correct: 0
+            },
+            {
+                question: "4. What is one of my top favorite things about you?",
+                options: ["Wunderschönen Augen 👀💙", "Toller Humor 😂", "Langen Beine 😆", "Boobs 😂"],
+                correct: 0
+            },
+            {
+                question: "5. Which movie did we watch together in the cinema? 🎬🍿",
+                options: ["Oppenheimer 💥🧪", "John Wick 4 🔫😎", "Gladiator 2 ⚔️🔥", "Titanic"],
+                correct: 2
+            },
+            {
+                question: "6. What is a nickname I rarely call you?",
+                options: ["Schatz 🥰", "Mäuschen 🐭", "Keine Ahnung! ", "Boss 😆"],
+                correct: 1
+            },
+            {
+                question: "7. Where did we go on our first nature trip together? 🌲🏔️",
+                options: ["Tirol ⛰️🌿", "Starnberger See", "Saxon Switzerland 🏞️🚶‍♂️"],
+                correct: 0
+            },
+            {
+                question: "8. Which food do we always love eating and cooking together? 🍽️",
+                options: ["Pizza 🍕", " Sushi 🍣", "Burgers 🍔", "Indian Butter Chicken 🔥"],
+                correct: 3
+            },
+            {
+                question: "9. Which food do I always love eating? 🍽️",
+                options: ["Thunfisch Pizza 🍕", "Sushi 🍣", "Lasagne", "Nudeln"],
+                correct: 0
+            },
+            {
+                question: "10. Who usually sleeps earlier when we watch a movie together? 🎬💤",
+                options: [" Me 😆 ", "Buddy 🐶", "Mom", "You 😴💤 "],
+                correct: 3
+            },
+            {
+                question: "11. On which side is your heart? ❤️😂",
+                options: ["Right side 🤣", "Left side 💖", "In the middle 🤔💕", "Wherever I put head 😜"],
+                correct: 1
+            },
+            {
+                question: "12. What did you do when I picked you up in Antalya instead of holding my hand? 🚗🤝",
+                options: ["You shook my hand 🤝😆 ", " You high-fived me ✋😂", "You kissed me right away 😘🥰", "You gave me a big hug 🤗❤️"],
+                correct: 0
+            },
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function buildQuiz() {
+            const quizDiv = document.getElementById('quiz');
+            quizDiv.innerHTML = `
+                <div class="question">
+                    <h3>${questions[currentQuestion].question}</h3>
+                    ${questions[currentQuestion].options.map((option, index) => `
+                        <button onclick="checkAnswer(${index})">${option}</button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function checkAnswer(selectedIndex) {
+            if (selectedIndex === questions[currentQuestion].correct) {
+                score++;
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                buildQuiz();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+    document.getElementById('quiz').innerHTML = `
+        <h2>Your Score: ${score}/${questions.length}</h2>
+        <p>${score === questions.length ? "Perfect! You're the love of my life! 💕 Happy Valentine's Day, my love! ❤️" : "Happy Valentine's Day, my love! ❤️"}</p>
+
+        <div class="final-note">
+            <p>No distance can change what we have, and every moment with you—near or far—feels just as special.</p>
+            <div class="big-text">💕 Du bist mein Zuhause, egal wo wir sind. 💕</div>
+            <p>(Maybe we are not physically together for now, but I hope this helps to warm your heart as you start your day.)</p>
+            <h3>✨ Note ✨</h3>
+            <p>These were the questions I was able to create for now, but you can also include many, and there will always be more moments to turn into questions. 😊</p>
+        </div>
+    `;
+        }
+
+        buildQuiz();
+    </script>
+</body>
+</html>
